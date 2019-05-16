@@ -29,6 +29,94 @@ The Girvan–Newman algorithm takes the opposite approach. It starts with the fu
 
 
 
+
+
+## K-Clique Clustering in NetworkX
+
+
+```python
+import networkx as nx
+import matplotlib.pyplot as plt
+%matplotlib inline
+G = nx.read_gexf('ga_graph.gexf')
+plt.figure(figsize=(12,8))
+nx.draw(G, with_labels=True, node_color="#1cf0c7",
+        alpha=.75, font_weight="bold", node_size=2*10**3, pos=nx.spring_layout(G, seed=4))
+```
+
+
+![png](index_files/index_2_0.png)
+
+
+
+```python
+c = list(nx.algorithms.community.k_clique_communities(G, k=2))
+c
+```
+
+
+
+
+    [frozenset({'addison',
+                'altman',
+                'arizona',
+                'avery',
+                'colin',
+                'denny',
+                'derek',
+                'finn',
+                'grey',
+                'hank',
+                'izzie',
+                'karev',
+                'kepner',
+                'lexi',
+                'mrs. seabury',
+                'nancy',
+                "o'malley",
+                'olivia',
+                'owen',
+                'preston',
+                'sloan',
+                'steve',
+                'torres',
+                'yang'}),
+     frozenset({'adele', 'chief', 'ellis grey', 'susan grey', 'thatch grey'}),
+     frozenset({'bailey', 'ben', 'tucker'})]
+
+
+
+
+```python
+colors = [("teal","#1cf0c7"),
+         ( "workzone_yellow","#ffd43d"),
+         ("light-blue","#00b3e6"),
+         ("medium-blue","#32cefe"),
+         ("gray","#efefef"),
+         ("slate","#2b2b2b")]
+color_dict = dict(colors)
+```
+
+
+```python
+fig = plt.figure(figsize=(12,8))
+for n, ci in enumerate(c):
+    ci = G.subgraph(ci)
+    nx.draw(ci, with_labels=True, node_color=colors[n][1],
+            alpha=.75, font_weight="bold", pos=nx.spring_layout(G, seed=4))
+```
+
+
+![png](index_files/index_5_0.png)
+
+
+## The Girvan Newman Algorithm in NetworkX
+
+
+```python
+
+```
+
 ## Summary
 
 In this lesson, you explored two algorithmic approaches to clustering networks. Such methods are essential for dissecting large networks into small constituencies for deeper analysis and comparison. From here, you'll further practice clustering with an applied analysis to a social network.
