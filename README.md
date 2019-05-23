@@ -1,5 +1,5 @@
 
-# Clustering Networks
+# Network Clustering
 
 ## Introduction
 
