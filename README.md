@@ -23,7 +23,7 @@ One method exhibiting the former approach to clustering is k-clique clustering. 
 
 K-clique clustering expands upon this notion of cliques by forming clusters of nodes that are within k edges from one another. As with the simple cliques shown above, all nodes within these clique clusters must be within k edges from any other node within the clique. 
 
-The Girvan–Newman algorithm takes the opposite approach. It starts with the full network and then begins removing nodes with the largest betweeness, observing how the graph then breaks into smaller clusters. Due to this approach, the graph will gradually be broken into smaller and smaller clusters until every node forms it's own cluster. As a result, determining an appropriate threshold to terminate the algorithm where groups are well formed and neither too general nor too specific can be a challenge.
+The Girvan–Newman algorithm takes the opposite approach. It starts with the full network and then begins removing nodes with the largest betweenness, observing how the graph then breaks into smaller clusters. Due to this approach, the graph will gradually be broken into smaller and smaller clusters until every node forms it's own cluster. As a result, determining an appropriate threshold to terminate the algorithm where groups are well formed and neither too general nor too specific can be a challenge.
 
 ## Implementing Clustering with NetworkX
 
@@ -109,9 +109,9 @@ for n, ci in enumerate(c):
 
 ## The Girvan Newman Algorithm in NetworkX
 
-As discussed, the Girvan Newman algorithm works by successively removing edges which are considered to be strong ties between subsets in the community. Typically, this is the betweeness metric. Since you are removing edges in the algorithm, betweeness is calculated for the edges as oppossed to the nodes, as you have previously seen. The process is nearly identical though. First, the shortest paths between all nodes are computed using Dijkstra's algorithm. From there, an edges betweeness is the fraction of these paths that the edge is part of.
+As discussed, the Girvan Newman algorithm works by successively removing edges which are considered to be strong ties between subsets in the community. Typically, this is the betweenness metric. Since you are removing edges in the algorithm, betweenness is calculated for the edges as opposed to the nodes, as you have previously seen. The process is nearly identical though. First, the shortest paths between all nodes are computed using Dijkstra's algorithm. From there, an edges betweenness is the fraction of these paths that the edge is part of.
 
-Implementing the algorithm with NetworkX is exceedingly straightforward. See the documentation for passing alternative metrics then betweeness through the algorithm.
+Implementing the algorithm with NetworkX is exceedingly straightforward. See the documentation for passing alternative metrics then betweenness through the algorithm.
 
 
 ```python
